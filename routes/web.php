@@ -21,7 +21,7 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 
 // initial project route
-Route::group(['middleware' => 'auth', 'prefix' => 'post'], function(){
+Route::group([ 'prefix' => 'post'], function(){
     Route::get('get_all', 'PostController@getAllPosts');
     Route::post('create_post', 'PostController@createPost');
 });

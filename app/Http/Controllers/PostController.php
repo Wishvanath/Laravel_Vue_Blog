@@ -24,14 +24,14 @@ class PostController extends Controller
             $user = Auth::user();
             $title = $request->title;
             $body = $request->body;
-            $image = $request->images;
+            $images = $request->images;
 
             $post = Post::create([
                 'title' => $title,
                 'body' => $body,
-                'user_id' => $user_id,
+                'user_id' => $user->id,
             ]);
-            //store each image in specific folder
+            // //store each image in specific folder
             foreach($images as $image){
                 $imagePath = Storage::disk('uploads')->put($user->email . '/posts', $image);
                 PostImage::create([
@@ -42,7 +42,8 @@ class PostController extends Controller
             }
             return response()->json([
                 'error' => false,
-                'data' => $post
+                'data' => $post,
+
             ]);
         }
     }

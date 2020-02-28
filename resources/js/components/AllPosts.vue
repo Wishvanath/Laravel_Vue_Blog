@@ -2,7 +2,7 @@
   <div class="row">
       <div class="col-md-6" v-for="(post, i) in posts" :key = i>
           <div class="card mt-4">
-              <img src="post.post_images[0].post_image_path" alt="Post Image" v-if="post.post_images.length" class="card-img-top">
+              <img :src="post.post_images[0].post_image_path" alt="Post Image" v-if="post.post_images.length" class="card-img-top">
                <div class="card-body">
                    <p class="card-text">
                        <strong>
@@ -17,7 +17,7 @@
       </div>
 
       <!-- another section -->
-      <el-dailog v-if="currentPost" :visible.sync="postDialogVisible" width="40%">
+      <el-dialog v-if="currentPost" :visible.sync="postDialogVisible" width="40%">
           <span>
               <h3>{{currentPost.title}}</h3>
               <div class="row">
@@ -33,7 +33,7 @@
                   Okey
               </el-button>
           </span>
-      </el-dailog>
+      </el-dialog>
   </div>
 </template>
 
